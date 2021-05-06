@@ -1,6 +1,8 @@
 import 'package:complex_timer/src/constants/app_styles.dart';
 import 'package:complex_timer/src/constants/app_utils.dart';
 import 'package:complex_timer/src/shared/scaffold/appbar_widget.dart';
+import 'package:complex_timer/src/views/countdown_actions_view.dart';
+import 'package:complex_timer/src/views/countdown_time_view.dart';
 import 'package:complex_timer/src/views/current_time_view.dart';
 import 'package:complex_timer/src/views/timer_actions_view.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +25,13 @@ class ComplexTimerView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CurrentTimeView(),
+              CurrentTimeView(title: 'Stopwatch Timer'),
               AppUtils.hSmallSpace,
-              TimerActionsView()
+              TimerActionsView(),
+              AppUtils.divider64,
+              CountdownTimeView(title: 'Countdown Timer'),
+              AppUtils.hSmallSpace,
+              CountdownActionsView(),
             ],
           ),
         ),

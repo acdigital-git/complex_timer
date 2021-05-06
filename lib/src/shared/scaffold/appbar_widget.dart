@@ -14,7 +14,7 @@ AppBar buildAppBar({required String title, double? height}) {
         AppUtils.wSmallSpace,
         Icon(
           Icons.timer_rounded,
-          size: 30.0,
+          size: 28.0,
         ),
       ],
     ),
