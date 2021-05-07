@@ -1,10 +1,10 @@
 import 'package:complex_timer/src/constants/app_styles.dart';
 import 'package:complex_timer/src/constants/app_utils.dart';
 import 'package:complex_timer/src/shared/scaffold/appbar_widget.dart';
-import 'package:complex_timer/src/views/countdown_actions_view.dart';
-import 'package:complex_timer/src/views/countdown_time_view.dart';
-import 'package:complex_timer/src/views/current_time_view.dart';
-import 'package:complex_timer/src/views/timer_actions_view.dart';
+import 'package:complex_timer/src/views/countdown_timer/countdown_actions_view.dart';
+import 'package:complex_timer/src/views/countdown_timer/countdown_time_view.dart';
+import 'package:complex_timer/src/views/complex_timer/current_time_view.dart';
+import 'package:complex_timer/src/views/complex_timer/timer_actions_view.dart';
 import 'package:flutter/material.dart';
 
 class ComplexTimerView extends StatelessWidget {
