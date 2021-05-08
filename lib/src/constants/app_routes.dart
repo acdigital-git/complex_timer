@@ -1,5 +1,5 @@
 import 'package:complex_timer/src/constants/app_titles.dart';
-import 'package:complex_timer/src/views/complex_timer_view.dart';
+import 'package:complex_timer/src/views/complex_timer/complex_timer_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {

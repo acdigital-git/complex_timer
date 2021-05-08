@@ -1,9 +1,9 @@
 import 'package:complex_timer/src/constants/app_styles.dart';
 import 'package:complex_timer/src/constants/app_utils.dart';
 import 'package:complex_timer/src/shared/scaffold/appbar_widget.dart';
-import 'package:complex_timer/src/views/complex_timer/timer_reset_button.dart';
-import 'package:complex_timer/src/views/complex_timer/timer_display.dart';
-import 'package:complex_timer/src/views/complex_timer/timer_play_button.dart';
+import 'package:complex_timer/src/views/complex_timer/widgets/timer_reset_button.dart';
+import 'package:complex_timer/src/views/complex_timer/widgets/timer_display.dart';
+import 'package:complex_timer/src/views/complex_timer/widgets/timer_play_button.dart';
 import 'package:flutter/material.dart';
 
 class ComplexTimerView extends StatelessWidget {

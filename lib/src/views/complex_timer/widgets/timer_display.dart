@@ -9,24 +9,21 @@ class TimerDisplay extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final timerValue = useProvider(timerValueProvider);
+    final _complexTimerValue =
+        useProvider(complexTimerProvider.select((timer) => timer.duration));
     return Material(
       borderRadius: BorderRadius.circular(6.0),
       clipBehavior: Clip.antiAlias,
       elevation: AppStyles.elevation,
       shadowColor: AppStyles.lightClr,
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppStyles.mediumClr,
-        ),
-        child: Center(
-          child: Text(
-            timerValue,
-            style: TextStyle(
-              fontSize: 64.0,
-              color: Colors.grey.shade800,
-              fontWeight: FontWeight.w600,
-            ),
+      color: AppStyles.mediumClr,
+      child: Center(
+        child: Text(
+          _complexTimerValue,
+          style: TextStyle(
+            fontSize: 64.0,
+            color: Colors.grey.shade800,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),

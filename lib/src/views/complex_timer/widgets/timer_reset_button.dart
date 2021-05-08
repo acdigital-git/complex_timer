@@ -11,20 +11,21 @@ class TimerResetButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status = useProvider(timerStatusProvider);
+    final _timerStatus =
+        useProvider(complexTimerProvider.select((timer) => timer.status));
     return Directionality(
       textDirection: TextDirection.rtl,
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(primary: Colors.orangeAccent),
-        onPressed: status != TimerStatus.initial
-            ? () => context.read(complexTimerProvider.notifier).resetTimer()
+        onPressed: _timerStatus != TimerStatus.initial
+            ? () => context.read(complexTimerProvider).resetTimer()
             : null,
         icon: Icon(
           Icons.restore_rounded,
           size: 34.0,
         ),
         label: Text(
-          'Reset',
+          'Reset timer',
           style: TextStyle(fontSize: 28.0),
         ),
       ),

@@ -7,6 +7,7 @@ class AppStyles {
   static final Color primaryClr = Colors.grey.shade800;
   static final Color mediumClr = Colors.grey.shade500;
   static final Color lightClr = Colors.grey.shade400;
+  static const Color shadowClr = Colors.deepOrange;
   // AppBar
   static const double toolbarHeight = 80.0;
   // ThemeData
