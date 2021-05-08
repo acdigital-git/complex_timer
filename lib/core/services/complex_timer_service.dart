@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:complex_timer/core/models/timer_status_enum.dart';
 import 'package:flutter/material.dart';
 
-const _tickDuration = Duration(seconds: 1);
+const _tickDuration = Duration(milliseconds: 1);
 
-class ComplexTimerChangeNotifier extends ChangeNotifier {
+class ComplexTimerService extends ChangeNotifier {
   final Stopwatch _sWatch = Stopwatch();
   Timer? _timer;
   Duration _currentDuration = Duration.zero;
@@ -18,10 +18,13 @@ class ComplexTimerChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  String _durationToStr(int currentTotal) {
-    final minutes = (currentTotal / 60).floor().toString().padLeft(2, '0');
-    final seconds = (currentTotal % 60).toString().padLeft(2, '0');
-    return '$minutes:$seconds';
+  String _durationToStr(int total) {
+    final minutes = (total / 60).floor().toString().padLeft(2, '0');
+    final seconds = (total % 60).toString().padLeft(2, '0');
+    final milliseconds =
+        (_sWatch.elapsed.inMilliseconds % 1000).toString().padLeft(3, '0');
+
+    return '$minutes:$seconds:$milliseconds';
   }
 
   _setDuration() {

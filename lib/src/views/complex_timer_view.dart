@@ -1,10 +1,9 @@
 import 'package:complex_timer/src/constants/app_styles.dart';
 import 'package:complex_timer/src/constants/app_utils.dart';
 import 'package:complex_timer/src/shared/scaffold/appbar_widget.dart';
-import 'package:complex_timer/src/views/countdown_timer/countdown_actions_view.dart';
-import 'package:complex_timer/src/views/countdown_timer/countdown_time_view.dart';
-import 'package:complex_timer/src/views/complex_timer/current_time_view.dart';
-import 'package:complex_timer/src/views/complex_timer/timer_actions_view.dart';
+import 'package:complex_timer/src/views/complex_timer/timer_reset_button.dart';
+import 'package:complex_timer/src/views/complex_timer/timer_display.dart';
+import 'package:complex_timer/src/views/complex_timer/timer_play_button.dart';
 import 'package:flutter/material.dart';
 
 class ComplexTimerView extends StatelessWidget {
@@ -13,6 +12,7 @@ class ComplexTimerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('**build base view**');
     return SafeArea(
       child: Scaffold(
         appBar: buildAppBar(
@@ -20,18 +20,28 @@ class ComplexTimerView extends StatelessWidget {
           height: AppStyles.toolbarHeight,
         ),
         body: Container(
+          padding: const EdgeInsets.all(32.0),
           width: double.infinity,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CurrentTimeView(title: 'Stopwatch Timer'),
+              Expanded(
+                flex: 2,
+                child: TimerDisplay(),
+              ),
+              AppUtils.hMediumSpace,
+              Expanded(
+                flex: 5,
+                child: PlayButton(),
+              ),
+              AppUtils.hMediumSpace,
+              Expanded(
+                flex: 1,
+                child: TimerResetButton(),
+              )
+              /* CurrentTimeView(title: 'Stopwatch Timer'),
               AppUtils.hSmallSpace,
-              TimerActionsView(),
-              AppUtils.divider64,
-              CountdownTimeView(title: 'Countdown Timer'),
-              AppUtils.hSmallSpace,
-              CountdownActionsView(),
+              TimerActionsView(), */
             ],
           ),
         ),
