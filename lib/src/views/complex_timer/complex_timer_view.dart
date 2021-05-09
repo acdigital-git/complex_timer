@@ -39,9 +39,6 @@ class ComplexTimerView extends StatelessWidget {
                 flex: 1,
                 child: TimerResetButton(),
               )
-              /* CurrentTimeView(title: 'Stopwatch Timer'),
-              AppUtils.hSmallSpace,
-              TimerActionsView(), */
             ],
           ),
         ),

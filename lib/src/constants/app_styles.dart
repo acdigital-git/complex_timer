@@ -21,7 +21,7 @@ class AppStyles {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       elevation: elevation,
-      shadowColor: primaryClr,
+      shadowColor: lightClr,
       actionsIconTheme: IconThemeData(color: Colors.white),
     ),
     dividerColor: lightClr,
