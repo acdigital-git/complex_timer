@@ -12,9 +12,9 @@ class TimerDisplay extends HookWidget {
     final _complexTimerValue =
         useProvider(complexTimerProvider.select((timer) => timer.duration));
     return Material(
-      borderRadius: BorderRadius.circular(6.0),
       clipBehavior: Clip.antiAlias,
       elevation: AppStyles.elevation,
+      borderRadius: BorderRadius.circular(6.0),
       shadowColor: AppStyles.lightClr,
       color: AppStyles.mediumClr,
       child: Center(

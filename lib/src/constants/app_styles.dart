@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppStyles {
-  static const elevation = 2.25;
+  // Material styles
+  static const double elevation = 5.0;
+  // Icons
+  static const double iconSize = 34.0;
   // Colors
   static final Color scaffoldBg = Colors.grey.shade700;
   static final Color primaryClr = Colors.grey.shade800;
@@ -15,9 +18,10 @@ class AppStyles {
     scaffoldBackgroundColor: scaffoldBg,
     primaryColor: primaryClr,
     brightness: Brightness.dark,
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       centerTitle: true,
-      elevation: 0,
+      elevation: elevation,
+      shadowColor: primaryClr,
       actionsIconTheme: IconThemeData(color: Colors.white),
     ),
     dividerColor: lightClr,

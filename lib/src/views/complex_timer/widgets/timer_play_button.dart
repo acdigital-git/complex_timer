@@ -29,9 +29,9 @@ class PlayButton extends HookWidget {
     }
 
     return Material(
-      elevation: 5,
+      elevation: AppStyles.elevation,
       shape: CircleBorder(),
-      //shadowColor: AppStyles.primaryClr,
+      shadowColor: AppStyles.lightClr,
       clipBehavior: Clip.antiAlias,
       color: AppStyles.mediumClr,
       child: InkWell(
