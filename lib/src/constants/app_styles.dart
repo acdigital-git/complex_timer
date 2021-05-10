@@ -19,10 +19,15 @@ class AppStyles {
     primaryColor: primaryClr,
     brightness: Brightness.dark,
     appBarTheme: AppBarTheme(
-      centerTitle: true,
+      //centerTitle: true,
+      titleSpacing: 32,
       elevation: elevation,
       shadowColor: lightClr,
-      actionsIconTheme: IconThemeData(color: Colors.white),
+
+      actionsIconTheme: IconThemeData(
+        color: Colors.white,
+        size: iconSize,
+      ),
     ),
     dividerColor: lightClr,
     dividerTheme: DividerThemeData(

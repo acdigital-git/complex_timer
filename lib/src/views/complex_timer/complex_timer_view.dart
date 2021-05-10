@@ -1,6 +1,7 @@
 import 'package:complex_timer/src/constants/app_styles.dart';
 import 'package:complex_timer/src/constants/app_utils.dart';
 import 'package:complex_timer/src/shared/scaffold/appbar_widget.dart';
+import 'package:complex_timer/src/views/complex_timer/widgets/results_nav_button.dart';
 import 'package:complex_timer/src/views/complex_timer/widgets/timer_reset_button.dart';
 import 'package:complex_timer/src/views/complex_timer/widgets/timer_display.dart';
 import 'package:complex_timer/src/views/complex_timer/widgets/timer_play_button.dart';
@@ -18,6 +19,7 @@ class ComplexTimerView extends StatelessWidget {
         appBar: buildAppBar(
           title: title,
           height: AppStyles.toolbarHeight,
+          actions: [ResultsNavButton()],
         ),
         body: Container(
           padding: const EdgeInsets.all(32.0),
