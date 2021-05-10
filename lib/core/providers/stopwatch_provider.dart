@@ -1,32 +1,50 @@
-import 'package:complex_timer/core/models/timer_result.dart';
+import 'package:complex_timer/core/models/split.dart';
 import 'package:complex_timer/core/services/complex_timer_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Service
 final complexTimerProvider = ChangeNotifierProvider<ComplexTimerService>((ref) {
-  final _results = ref.watch(complexTimerResultsNotifier.notifier);
+  final _results = ref.watch(splitsNotifier.notifier);
   return ComplexTimerService(results: _results);
 });
 
-final complexTimerResultsNotifier =
-    StateNotifierProvider<ComplexTimerResultsNotifier, List<TimerResult>>(
-  (ref) => ComplexTimerResultsNotifier(),
+// Splits
+final splitsFilterNotifier = StateNotifierProvider<SplitsFilterNotifier, bool>(
+  (ref) => SplitsFilterNotifier(),
 );
 
-final resultsEmptyProvider =
-    Provider<bool>((ref) => ref.watch(complexTimerResultsNotifier).isEmpty);
+final splitsNotifier = StateNotifierProvider<SplitsNotifier, List<Split>>(
+  (ref) => SplitsNotifier(),
+);
 
-class ComplexTimerResultsNotifier extends StateNotifier<List<TimerResult>> {
-  ComplexTimerResultsNotifier([List<TimerResult>? initialResults])
-      : super(initialResults ?? []);
+final filteredSplitsProvider = Provider<List<Split>>((ref) {
+  final _results = ref.watch(splitsNotifier);
+  final _isFiltered = ref.watch(splitsFilterNotifier);
+  return _isFiltered ? _results.reversed.toList() : _results;
+});
 
-  void add({required String timerValue}) {
-    print('Before : ' + state.length.toString());
-    state = [
-      ...state,
-      TimerResult(id: (state.length - 1), value: timerValue),
-    ];
-    print('After : ' + state.length.toString());
-  }
+final lastSplitProvider = Provider<String>((ref) {
+  final _results = ref.watch(splitsNotifier);
+  final _lenght = _results.length;
+  return _lenght != 0 ? _results.elementAt(_lenght - 1).value : '00:00:000';
+});
+
+final splitsEmptyProvider =
+    Provider<bool>((ref) => ref.watch(splitsNotifier).isEmpty);
+
+class SplitsNotifier extends StateNotifier<List<Split>> {
+  SplitsNotifier([List<Split>? initialResults]) : super(initialResults ?? []);
+
+  void add({required String timerValue}) => state = [
+        ...state,
+        Split(id: (state.length), value: timerValue),
+      ];
 
   void clear() => state = [];
+}
+
+class SplitsFilterNotifier extends StateNotifier<bool> {
+  SplitsFilterNotifier([bool? initialValue]) : super(initialValue ?? false);
+
+  void toggle() => state = !state;
 }

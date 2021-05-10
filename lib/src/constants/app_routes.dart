@@ -1,11 +1,11 @@
 import 'package:complex_timer/src/constants/app_titles.dart';
-import 'package:complex_timer/src/views/complex_timer/complex_timer_results.dart';
+import 'package:complex_timer/src/views/splits/splits_view.dart';
 import 'package:complex_timer/src/views/complex_timer/complex_timer_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
   static const complexTimer = '/';
-  static const complexTimerResults = '/results';
+  static const complexTimerSplits = '/results';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     //final args = settings.arguments;
@@ -13,10 +13,9 @@ class AppRoutes {
       case complexTimer:
         return MaterialPageRoute(
             builder: (_) => ComplexTimerView(title: AppTitles.complexTimer));
-      case complexTimerResults:
+      case complexTimerSplits:
         return MaterialPageRoute(
-            builder: (_) =>
-                ComplexTimerResultsView(title: AppTitles.complexTimerResults));
+            builder: (_) => SplitsView(title: AppTitles.complexTimerSplits));
       default:
         return _errorRoute();
     }

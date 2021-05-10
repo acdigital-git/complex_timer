@@ -8,19 +8,27 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class TimerResetButton extends HookWidget {
   const TimerResetButton({
     Key? key,
-  }) : super(key: key);
+    required AnimationController animationController,
+  })   : _animationController = animationController,
+        super(key: key);
+
+  final AnimationController _animationController;
 
   @override
   Widget build(BuildContext context) {
-    final _timerStatus =
-        useProvider(complexTimerProvider.select((timer) => timer.status));
+    final _initialStatus =
+        useProvider(complexTimerProvider.select((timer) => timer.status)) ==
+            TimerStatus.initial;
     return Directionality(
       textDirection: TextDirection.rtl,
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(primary: Colors.orangeAccent),
-        onPressed: _timerStatus != TimerStatus.initial
-            ? () => context.read(complexTimerProvider).resetTimer()
-            : null,
+        onPressed: _initialStatus
+            ? null
+            : () {
+                context.read(complexTimerProvider).resetTimer();
+                _animationController.reverse();
+              },
         icon: Icon(
           Icons.restore_rounded,
           size: AppStyles.iconSize,

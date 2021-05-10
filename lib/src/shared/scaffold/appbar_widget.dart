@@ -1,4 +1,3 @@
-import 'package:complex_timer/src/constants/app_utils.dart';
 import 'package:flutter/material.dart';
 
 AppBar buildAppBar(
@@ -10,19 +9,9 @@ AppBar buildAppBar(
     toolbarHeight: height ?? kToolbarHeight,
     actions: actions,
     centerTitle: centerTitle,
-    title: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          Icons.timer_rounded,
-          size: 34.0,
-        ),
-        AppUtils.wSmallSpace,
-        Text(
-          title,
-          style: const TextStyle(fontSize: 26.0),
-        ),
-      ],
+    title: Text(
+      title,
+      style: const TextStyle(fontSize: 26.0),
     ),
   );
 }
