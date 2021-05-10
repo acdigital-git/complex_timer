@@ -1,11 +1,14 @@
 import 'dart:async';
-
 import 'package:complex_timer/core/models/timer_status_enum.dart';
+import 'package:complex_timer/core/providers/stopwatch_provider.dart';
 import 'package:flutter/material.dart';
 
 const _tickDuration = Duration(milliseconds: 1);
 
 class ComplexTimerService extends ChangeNotifier {
+  ComplexTimerService({required SplitsNotifier results})
+      : _resultsProvider = results;
+  final SplitsNotifier _resultsProvider;
   final Stopwatch _sWatch = Stopwatch();
   Timer? _timer;
   Duration _duration = Duration.zero;
@@ -38,6 +41,7 @@ class ComplexTimerService extends ChangeNotifier {
   }
 
   void startTimer() {
+    if (_status == TimerStatus.initial) _resultsProvider.clear();
     _sWatch.start();
     _timer = Timer.periodic(_tickDuration, (_) {
       _setDuration();
@@ -45,18 +49,24 @@ class ComplexTimerService extends ChangeNotifier {
     status = TimerStatus.running;
   }
 
-  void stopTimer() {
+  void pauseTimer() {
     _timer?.cancel();
     _sWatch.stop();
     _setDuration();
     status = TimerStatus.paused;
   }
 
-  void resetTimer() {
+  void createSplit() {
+    _resultsProvider.add(timerValue: duration);
     _sWatch.reset();
     _setDuration();
-    if (!_sWatch.isRunning) {
-      status = TimerStatus.initial;
-    }
+  }
+
+  void resetTimer() {
+    _timer?.cancel();
+    _sWatch.stop();
+    _sWatch.reset();
+    _setDuration();
+    status = TimerStatus.initial;
   }
 }

@@ -8,24 +8,25 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class PlayButton extends HookWidget {
   const PlayButton({
     Key? key,
-  }) : super(key: key);
+    required AnimationController animationController,
+  })   : _animationController = animationController,
+        super(key: key);
+
+  final AnimationController _animationController;
 
   @override
   Widget build(BuildContext context) {
-    final _animController = useAnimationController(
-      duration: const Duration(milliseconds: 300),
-    );
     final _timerStatus =
         useProvider(complexTimerProvider.select((timer) => timer.status));
 
     void _startTimer() {
-      _animController.forward();
       context.read(complexTimerProvider).startTimer();
+      _animationController.forward();
     }
 
     void _stopTimer() {
-      _animController.reverse();
-      context.read(complexTimerProvider).stopTimer();
+      _animationController.reverse();
+      context.read(complexTimerProvider).pauseTimer();
     }
 
     return Material(
@@ -42,7 +43,7 @@ class PlayButton extends HookWidget {
             color: _timerStatus == TimerStatus.running
                 ? Colors.redAccent
                 : Colors.teal,
-            progress: _animController,
+            progress: _animationController,
             size: 120.0,
           ),
         ),

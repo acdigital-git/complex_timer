@@ -10,19 +10,25 @@ class AppStyles {
   static final Color primaryClr = Colors.grey.shade800;
   static final Color mediumClr = Colors.grey.shade500;
   static final Color lightClr = Colors.grey.shade400;
-  static const Color shadowClr = Colors.deepOrange;
+  static final Color accentClr = Colors.deepPurple;
+  static final Color successClr = Colors.teal;
   // AppBar
-  static const double toolbarHeight = 80.0;
+  static const double toolbarHeight = 70.0;
   // ThemeData
   static ThemeData theme = ThemeData(
     scaffoldBackgroundColor: scaffoldBg,
     primaryColor: primaryClr,
     brightness: Brightness.dark,
     appBarTheme: AppBarTheme(
-      centerTitle: true,
+      //centerTitle: true,
+      titleSpacing: 32,
       elevation: elevation,
       shadowColor: lightClr,
-      actionsIconTheme: IconThemeData(color: Colors.white),
+
+      actionsIconTheme: IconThemeData(
+        color: Colors.white,
+        size: iconSize,
+      ),
     ),
     dividerColor: lightClr,
     dividerTheme: DividerThemeData(
